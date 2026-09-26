@@ -77,6 +77,7 @@ app.include_router(simulation.router, prefix="/api", tags=["Simulation"])
 app.include_router(network.router, prefix="/api/network", tags=["Network"])
 app.include_router(alerts.router, prefix="/api/alerts", tags=["Alerts"])
 app.include_router(analytics.router, prefix="/api/analytics", tags=["Analytics"])
+app.include_router(sarvam.router, prefix="/api/sarvam", tags=["Sarvam"])
 app.include_router(websocket.router, tags=["WebSocket"])
 
 
