@@ -15,7 +15,7 @@ from app.database.db import init_db
 from app.database.seed import seed_db
 from app.simulation.engine import simulation_engine
 from app.services.eta_service import eta_service
-from app.api import trains, simulation, network, alerts, analytics, websocket
+from app.api import trains, simulation, network, alerts, analytics, websocket, sarvam
 
 
 @asynccontextmanager
