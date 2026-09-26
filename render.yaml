@@ -14,13 +14,15 @@ services:
     startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /api/health
     autoDeployTrigger: commit
-    envVars:
+      envVars:
       - key: DATABASE_URL
         value: sqlite+aiosqlite:///./railpulse.db
       - key: DEMO_MODE
         value: "true"
       - key: SIMULATION_INTERVAL
         value: "3"
+      - key: SARVAM_API_KEY
+        sync: false
 
   # React/Vite frontend. VITE_API_URL is baked into the static build.
   - type: web
