@@ -3,6 +3,7 @@ import { Search, Train, Clock, MapPin, Map, Info, ChevronRight } from 'lucide-re
 import * as api from '../services/api';
 import { wsService } from '../services/websocket';
 import { ETAPrediction } from '../types';
+import VoiceAnnouncement from '../components/VoiceAnnouncement';
 
 const PassengerView = () => {
   const [search, setSearch] = useState('');
@@ -140,6 +141,13 @@ const PassengerView = () => {
                   <div className="flex items-center gap-1"><MapPin className="w-4 h-4" /> {selectedTrain.source}</div>
                   <ChevronRight className="w-4 h-4" />
                   <div className="flex items-center gap-1"><Map className="w-4 h-4" /> {selectedTrain.destination}</div>
+                </div>
+                <div className="mt-3 pt-3 border-t border-indigo-800/60 flex flex-wrap items-center gap-3 text-xs text-indigo-200">
+                  <span>Runs: <strong>{selectedTrain.days_of_run || 'Daily'}</strong></span>
+                  <span>•</span>
+                  <span>Distance: <strong>{selectedTrain.total_distance_km} km</strong></span>
+                  <span>•</span>
+                  <span>Stops: <strong>{route.length} Stations</strong></span>
                 </div>
                 <div className="mt-3 pt-3 border-t border-indigo-800/60 flex flex-wrap items-center gap-3 text-xs text-indigo-200">
                   <span>Runs: <strong>{selectedTrain.days_of_run || 'Daily'}</strong></span>
