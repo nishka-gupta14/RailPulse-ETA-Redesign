@@ -149,13 +149,17 @@ const PassengerView = () => {
                   <span>•</span>
                   <span>Stops: <strong>{route.length} Stations</strong></span>
                 </div>
-                <div className="mt-3 pt-3 border-t border-indigo-800/60 flex flex-wrap items-center gap-3 text-xs text-indigo-200">
-                  <span>Runs: <strong>{selectedTrain.days_of_run || 'Daily'}</strong></span>
-                  <span>•</span>
-                  <span>Distance: <strong>{selectedTrain.total_distance_km} km</strong></span>
-                  <span>•</span>
-                  <span>Stops: <strong>{route.length} Stations</strong></span>
-                </div>
+                  {nextStation && (
+                  <div className="mt-3 pt-3 border-t border-indigo-800/60">
+                    <VoiceAnnouncement
+                      alertText={`Train ${selectedTrain.train_number}, ${selectedTrain.train_name}. ${
+                        nextStation.predicted_delay_minutes > 0
+                          ? `Delayed by ${nextStation.predicted_delay_minutes} minutes at ${nextStation.station_name}.`
+                          : `Running on time towards ${nextStation.station_name}.`
+                      }`}
+                    />
+                  </div>
+                )}
               </div>
             </div>
 
