@@ -71,3 +71,10 @@ export const recalculateETA = () =>
 
 export const resolveIssue = (trainId: string) =>
   api.post(`/simulation/resolve/${trainId}`).then(res => res.data);
+
+export const getVoiceAnnouncement = (text: string, lang: string) =>
+  api.post('/sarvam/announce', { text, lang }).then(res => res.data as {
+    translated_text: string;
+    audio_base64: string;
+    audio_format: string;
+  });
